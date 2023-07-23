@@ -4,10 +4,9 @@ const { Category, Product } = require('../../models');
 // The `/api/categories` endpoint
 
 router.get('/', async (req, res) => {
-  try {
-      
-      // find all categories
-      // be sure to include its associated Products
+  // find all categories
+  // be sure to include its associated Products
+  try {      
       const categoryData = await Category.findAll({
         include: [{ model: Product}],
       });
@@ -18,7 +17,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
@@ -28,7 +26,7 @@ router.get('/:id', async (req, res) => {
     }); 
 
     if (!categoryById) {
-      res.status(200).json({message: 'No categories found'});
+      res.status(200).json({message: 'No category with that ID found'});
       return; 
     };
 
@@ -39,15 +37,16 @@ router.get('/:id', async (req, res) => {
 }
 });
 
-router.post('/', async(req, res) => {
+
+router.post('/', async (req, res) => {
   // create a new category
   try {
     const newCategory = await Category.create ({
       category_name: req.body.category_name
     })
 
-    res.status(200).json(category_id);
-    console.log ('New category added')
+    res.status(200).json(newCategory);
+    console.log ('A new tag has been added')
 
   } catch (err) {
     res.status(500).json(err); 
@@ -66,16 +65,16 @@ router.put('/:id', async (req, res) => {
       }
     });
 
-    const category_id = await Category.findByPk(req.params.id, {
+    const categoryById = await Category.findByPk(req.params.id, {
       include: [{ model: Product }]
     });
 
-    if (!category_id) {
-      res.status(200).json( {message: 'No categories found'} );
-      return;
+    if (!categoryById) {
+      res.status(200).json({message: 'No categories found'});
+      return; 
     };
     
-    res.status(500).json(updateCategory); 
+    res.status(200).json(updateCategory); 
     console.log("Category Updated")
 
   } catch (err) {
@@ -98,8 +97,7 @@ router.delete('/:id', async (req, res) => {
       return;
     };
     
-    res.status(500).json(deleteCategoryCategory); 
-    console.log("Category Updated")
+    res.status(200).json(deleteCategory); 
 
   } catch (err) {
     res.status(500).json(err); 

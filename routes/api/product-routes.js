@@ -15,65 +15,24 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-// router.get('/', async (req, res) => {
-//   // find all products
-//   // be sure to include its associated Category and Tag data
-//   try {
-//     const productData = await Product.findAll({
-//       include: [{model: Category}]
-//     });
-
-//     if (!productData) {
-//       res.status(200).json({message: 'No products found'});
-//       return; 
-//     };
-
-//     res.status(200).json(productData);
-
-//   } catch (err) {
-//       res.status(500).json(err); 
-//   }
-
-// });
-
-// get one product
+// get product by ID
 router.get('/:id', async (req, res) => {
-  // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
   try {
-    const product_id = await Category.findByPk(req.params.id, {
+    const productByID = await Product.findByPk(req.params.id, {
       include: [{ model: Tag }]
     }); 
 
-    if (!product_id) {
-      res.status(200).json({message: 'No categories found'});
+    if (!productByID) {
+      res.status(200).json({message: 'No product with that ID found'});
       return; 
     };
 
-    res.status(200).json(product_id);
+    res.status(200).json(productByID);
 
   }catch (err) {
     res.status(500).json(err); 
 }
 });
-
-router.post('/', async(req, res) => {
-  // create a new category
-  try {
-    const newCategory = await Category.create ({
-      category_name: req.body.category_name
-    })
-
-    res.status(200).json(category_id);
-    console.log ('New category added')
-
-  } catch (err) {
-    res.status(500).json(err); 
-  };
-});
-
-
 
 // create new product
 router.post('/', (req, res) => {
@@ -149,8 +108,26 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
+  try {
+    const deleteProduct = await Product.destroy (
+      {
+        where: {
+          id: req.params.id
+        }
+    });
+
+    if (!deleteProduct) {
+      res.status(200).json( {message: 'No product with that ID found'} );
+      return;
+    };
+    
+    res.status(200).json(deleteProduct); 
+
+  } catch (err) {
+    res.status(500).json(err); 
+  };
 });
 
 module.exports = router;
