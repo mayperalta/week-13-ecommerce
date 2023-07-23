@@ -42,32 +42,62 @@ On Insomnia, do the following:
 * Create folders (CATEGORIES, PRODUCTS, TAGS)
 * Create New HTTP Request for each folder
     - CATEGORIES
-        - GET {{domain}}/categories
-        - POST {{domain}}/categories
-        - GET {{domain}}/categories/8
-        - PUT {{domain}}/categories/8
-        - DELETE {{domain}}/categories/8
+        - VIEW categories -> GET {{domain}}/categories
+        - CREATE category -> POST {{domain}}/categories
+        - VIEW category by ID -> GET {{domain}}/categories/8
+        - UPDATE category by ID ->  PUT {{domain}}/categories/8
+        - DELETE category by ID -> DELETE {{domain}}/categories/8
     - PRODUCTS
-        - GET {{domain}}/products
-        - POST {{domain}}/products
-        - GET {{domain}}/products/5
-        - PUT {{domain}}/products/5
-        - DELETE {{domain}}/products/5
+        - VIEW products -> GET {{domain}}/products
+        - CREATE product -> POST {{domain}}/products
+        - VIEW product by ID -> GET {{domain}}/products/5
+        - UPDATE product by ID -> PUT {{domain}}/products/5
+        - DELETE product by ID -> DELETE {{domain}}/products/5
     - TAGS
-        - GET {{domain}}/tags
-        - POST {{domain}}/tags
-        - GET {{domain}}/tags/9
-        - PUT {{domain}}/tags/9
-        - DELETE {{domain}}/tags/9
+        - VIEW tags -> GET {{domain}}/tags
+        - CREATE tag -> POST {{domain}}/tags
+        - VIEW tag by ID -> GET {{domain}}/tags/9
+        - UPDATE tag by ID -> PUT {{domain}}/tags/9
+        - DELETE tag by ID -> DELETE {{domain}}/tags/9
+
+# How to Use 
+
+On MySQL Workbench, do the following:
+
+* Create Database by pasting content from /db/schema.sql 
+* Then execute 
+
+On the Visual Studio terminal, do the following:
+
+* npm run seed
+* npm start
+
+On Insomnia, do the following:
+
+* Select an HTTP REQUEST from each folder then click SEND
+* Make POST and PUT request with the following JSON body content
+
+- CATEGORY
+```
+    {
+	"category_name": "STRING INPUT"
+    }
+```
+
+- PRODUCTS
+```
+    {
+	"product_name": "STRING INPUT",
+    "price": DECIMAL INPUT,
+    "stock": INTEGER INPUT,
+    "tagIds": [INTEGER INPUT]
+}
+```
+- TAGS
+```
+    {
+	"category_name": "STRING INPUT"
+    }
+```
 
 
-
-* git clone https://github.com/mayperalta/week-12-sql-employee-tracker.git
-* npm init
-* npm i inquirer@8.2.5
-* npm i mysql12@3.4.5
-
-On the MySQL Workbench, do the following:
-
-* execute schema.sql
-* execute seeds.sql
