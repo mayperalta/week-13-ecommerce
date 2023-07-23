@@ -100,4 +100,9 @@ On Insomnia, do the following:
     }
 ```
 
+# Questions
 
+Contact: 
+
+* Github - mayperalta
+* Email - mayperalta@gmail.com 
