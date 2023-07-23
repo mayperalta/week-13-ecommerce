@@ -104,5 +104,5 @@ On Insomnia, do the following:
 
 Contact: 
 
-* Github - mayperalta
+* Github - https://github.com/mayperalta/
 * Email - mayperalta@gmail.com 
