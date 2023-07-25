@@ -100,9 +100,25 @@ On Insomnia, do the following:
     }
 ```
 
+# Mock up
+
+The video below demonstrates how to run the seed and connect to the localhost:
+
+![Watch video 1](./public/assets/videos/npm.gif)
+
+Here's the video link: https://drive.google.com/file/d/1fx6spolH5KyjzqdxdB7ohw4otlAIFLUh/view 
+
+
+The video below is a demonstration of all API routes using Insomnia:
+
+![Watch video 2](./public/assets/videos/insomnia.gif)
+
+Here's the video link: https://drive.google.com/file/d/1Y8ZaHiuxoc9jcO_QweMYsR3BQuLE5M0P/view 
+
+
 # Questions
 
 Contact: 
 
-* Github - https://github.com/mayperalta/
+* Github - https://github.com/mayperalta/week-13-ecommerce 
 * Email - mayperalta@gmail.com 
